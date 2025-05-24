@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_sale_conversion_report_root"
+              name="Conversion Reports"
+              sequence="20"/>
+
+    <menuitem id="menu_sale_conversion_report"
+              name="Conversion Report"
+              parent="menu_sale_conversion_report_root"
+              action="action_sale_conversion_report"
+              sequence="10"/>
+</odoo>

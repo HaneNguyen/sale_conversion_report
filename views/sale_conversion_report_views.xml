@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- List view -->
+    <record id="view_sale_conversion_report_list" model="ir.ui.view">
+        <field name="name">sale.conversion.report.list</field>
+        <field name="model">sale.conversion.report</field>
+        <field name="arch" type="xml">
+            <list string="Sale Conversion Report">
+                <field name="period"/>
+                <field name="user_id"/>
+                <field name="partner_id"/>
+                <field name="partner_state_id"/>
+                <field name="total_quotations"/>
+                <field name="total_orders"/>
+                <field name="conversion_rate"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Pivot view -->
+    <record id="view_sale_conversion_report_pivot" model="ir.ui.view">
+        <field name="name">sale.conversion.report.pivot</field>
+        <field name="model">sale.conversion.report</field>
+        <field name="arch" type="xml">
+            <pivot string="Sale Conversion Report Pivot">
+                <field name="period" type="row"/>
+                <field name="user_id" type="col" string="Salesperson"/>
+                <field name="partner_id" type="col" string="Customer"/>
+                <field name="partner_state_id" type="col" string="Customer State"/>
+                <field name="total_quotations" type="measure" string="Total Quotations"/>
+                <field name="total_orders" type="measure" string="Total Orders"/>
+                <field name="conversion_rate" type="measure" string="Conversion Rate (%)"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Graph view -->
+    <record id="view_sale_conversion_report_graph" model="ir.ui.view">
+        <field name="name">sale.conversion.report.graph</field>
+        <field name="model">sale.conversion.report</field>
+        <field name="arch" type="xml">
+            <graph string="Sale Conversion Report Graph" type="bar">
+                <field name="period" type="row"/>
+                <field name="conversion_rate" type="measure"/>
+                <field name="user_id" type="col" string="Salesperson"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Action Window -->
+    <record id="action_sale_conversion_report" model="ir.actions.act_window">
+        <field name="name">Sale Conversion Report</field>
+        <field name="res_model">sale.conversion.report</field>
+        <field name="view_mode">list,pivot,graph</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Báo cáo tỉ lệ chuyển đổi từ báo giá sang đơn hàng theo tháng, phân tích theo nhân viên, khách hàng, khu vực.
+            </p>
+        </field>
+    </record>
+</odoo>
